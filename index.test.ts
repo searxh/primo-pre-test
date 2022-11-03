@@ -1,69 +1,69 @@
 import { merge } from "./index";
 
-test("test 1", () => {
+test("general case", () => {
 	const collection_1: Array<number> = [1, 3, 5, 7];
 	const collection_2: Array<number> = [2, 4, 5, 8, 9];
 	const result = [...collection_1, ...collection_2].sort();
 	expect(merge(collection_1, collection_2)).toStrictEqual(result);
 });
 
-test("test 2", () => {
+test("first collection empty", () => {
 	const collection_1: Array<number> = [];
 	const collection_2: Array<number> = [1, 2, 5, 8, 12];
 	const result = collection_2.sort();
 	expect(merge(collection_1, collection_2)).toStrictEqual(result);
 });
 
-test("test 3", () => {
+test("second collection empty", () => {
 	const collection_1: Array<number> = [3, 4, 8];
 	const collection_2: Array<number> = [];
 	const result = collection_1.sort();
 	expect(merge(collection_1, collection_2)).toStrictEqual(result);
 });
 
-test("test 4", () => {
+test("first collection undefined", () => {
 	const collection_1 = undefined;
-	const collection_2: Array<number> = [];
+	const collection_2: Array<number> = [1, 2];
 	const result = collection_2;
 	expect(merge(collection_1, collection_2)).toStrictEqual(result);
 });
 
-test("test 5", () => {
-	const collection_1: Array<number> = [];
+test("second collection undefined", () => {
+	const collection_1: Array<number> = [4];
 	const collection_2 = undefined;
 	const result = collection_1;
 	expect(merge(collection_1, collection_2)).toStrictEqual(result);
 });
 
-test("test 6", () => {
+test("both collection undefined", () => {
 	const collection_1 = undefined;
 	const collection_2 = undefined;
 	const result = undefined;
 	expect(merge(collection_1, collection_2)).toStrictEqual(result);
 });
 
-test("test 7", () => {
+test("first collection null", () => {
 	const collection_1 = null;
-	const collection_2: Array<number> = [];
+	const collection_2: Array<number> = [3, 8, 12];
 	const result = collection_2;
 	expect(merge(collection_1, collection_2)).toStrictEqual(result);
 });
 
-test("test 8", () => {
+test("second collection null", () => {
 	const collection_1: Array<number> = [];
 	const collection_2 = null;
 	const result = collection_1;
 	expect(merge(collection_1, collection_2)).toStrictEqual(result);
 });
 
-test("test 9", () => {
+test("both collection null", () => {
 	const collection_1 = null;
 	const collection_2 = null;
 	const result = undefined;
 	expect(merge(collection_1, collection_2)).toStrictEqual(result);
 });
 
-test("test 10", () => {
+test("randomly generated case", () => {
 	const getRandomInt = (min: number, max: number): number => {
 		return Math.floor(Math.random() * (max - min + 1) + min);
 	};
